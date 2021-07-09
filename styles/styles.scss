@@ -3,62 +3,39 @@
 $black: #131515;
 $daryGrey: #2b2c28;
 $darkPurple: #512888;
-$lightPurple: lighten($darkPurple, 40%);
 $lightGray: #d3d3d3;
 $superLight: #efefef;
 $white: #f4f4f4;
 
 body {
 	font-family: 'Montserrat', sans-serif;
-	color: $black;
 }
 
+// Nav menu
+
 .nav-container {
+	// Overall nav
+
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
 	height: 8vh;
-	width: 100%;
+	width: 100vw;
 	background: $lightGray;
 
 	.burger {
 		display: none;
-		padding: 1rem;
-		cursor: pointer;
-
-		div {
-			width: 25px;
-			height: 3px;
-			background-color: $black;
-			margin: 5px;
-			transition: all 0.3s ease;
-		}
 	}
 
 	.logo-container {
-		padding: 0.5rem;
+		padding: 0;
 		img {
-			max-height: 4vh;
-		}
-	}
-
-	.nav-links {
-		display: flex;
-		justify-content: space-around;
-
-		li {
-			font-size: 1.25rem;
-			padding: 0.75rem;
-		}
-
-		a {
-			text-decoration: none;
-			color: inherit;
+			max-height: 3vh;
 		}
 	}
 
 	.shopping-logo-container {
-		padding: 1rem;
+		padding: 0.5rem;
 
 		a {
 			display: flex;
@@ -75,112 +52,306 @@ body {
 			height: 34px;
 			width: 34px;
 			border-radius: 50%;
-			background: $black;
+			background: $daryGrey;
+		}
+	}
+
+	// desktop menu
+
+	.nav-section {
+		display: flex;
+		justify-content: space-around;
+
+		// fix?
+		a {
+			text-decoration: none;
+			color: inherit;
+
+			&:focus-within {
+				outline: none;
+			}
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			font-size: 1.25rem;
+			height: 8vh;
+			padding: 0 1rem;
+			transition: 0.25s;
+
+			&:hover,
+			&:focus-within {
+				background-color: $superLight;
+			}
+		}
+
+		// Sub nav links
+
+		.nav-sub-links {
+			&-1,
+			&-2,
+			&-3 {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: absolute;
+				top: -6vh;
+				z-index: -1;
+				left: 0;
+				height: 12vh;
+				width: 100vw;
+				background: white;
+				padding-top: 0.5rem;
+				border-bottom: 1px solid $daryGrey;
+				animation: navLinkUp ease-in backwards 0.1s;
+
+				a {
+					text-decoration: none;
+					color: inherit;
+					background: white;
+					padding: 0 2rem;
+					display: flex;
+					flex-direction: column;
+
+					img {
+						height: 70px;
+					}
+
+					p {
+						text-align: center;
+						padding-top: 5px;
+					}
+				}
+			}
+		}
+	}
+
+	// Desktop transition triggers
+	// When section is hovered or focused, it animates the sub sections
+
+	.earphone:hover ~ .nav-sub-links-1,
+	.earphone:focus-within ~ .nav-sub-links-1,
+	.nav-sub-links-1:hover,
+	.nav-sub-links-1:focus {
+		animation: navLinkDown 0.1s ease-out forwards 0.25s;
+	}
+
+	.headphone:hover ~ .nav-sub-links-2,
+	.headphone:focus-within ~ .nav-sub-links-2,
+	.nav-sub-links-2:hover,
+	.nav-sub-links-2:focus {
+		animation: navLinkDown 0.1s ease-out forwards 0.25s;
+	}
+
+	.support:hover ~ .nav-sub-links-3,
+	.support:focus-within ~ .nav-sub-links-3,
+	.nav-sub-links-3:hover,
+	.nav-sub-links-3:focus {
+		animation: navLinkDown 0.1s ease-out forwards 0.25s;
+	}
+
+	.nav-m-links {
+		display: none;
+	}
+
+	.nav-m-sub-links {
+		&-1,
+		&-2,
+		&-3 {
+			display: none;
 		}
 	}
 }
 
+// Mobile menu
+
 @media screen and (max-width: 1024px) {
-	.nav-container {
-		.nav-links {
-			display: flex;
-			justify-content: space-around;
-
-			li {
-				font-size: 1.15rem;
-				padding: 0.5rem;
-			}
-
-			a {
-				text-decoration: none;
-				color: inherit;
-			}
+	&-1,
+	&-2,
+	&-3 {
+		a {
+			padding: 0 1rem;
 		}
 	}
 }
 
 @media screen and (max-width: 786px) {
-	body {
-		overflow-x: hidden;
-	}
+	// Mobile menu
 
 	.nav-container {
+		// Reverse main menu
+		.nav-section {
+			display: none !important;
+		}
+
 		.burger {
 			display: block;
-		}
+			padding: 1rem;
+			cursor: pointer;
 
-		.nav-links {
-			position: absolute;
-			left: 0;
-			top: 8vh;
+			div {
+				width: 25px;
+				height: 3px;
+				background-color: $black;
+				margin: 5px;
+				transition: all 0.25s ease;
+			}
+		}
+		.nav-m-links {
 			display: flex;
-			width: 50%;
+			position: absolute;
+			top: 8vh;
+			left: 0;
 			flex-direction: column;
 			justify-content: flex-start;
+			align-items: center;
+			height: 92vh;
+			width: 50%;
+			background-color: $lightGray;
 			transform: translateX(-100%);
-			transition: transform 0.25s ease-in;
 
-			li {
-				font-size: 1.5rem;
-				padding: 1rem;
-				opacity: 0;
-				background: $superLight;
+			.main-m-links {
+				padding: 2rem 0;
+				text-align: center;
+				width: 100%;
+				font-size: 1.25rem;
+				transition: 0.1s;
+
+				&:hover,
+				&:focus-within {
+					background-color: $superLight;
+				}
+
+				a {
+					text-decoration: none;
+					color: inherit;
+
+					&:focus-within {
+						outline: none;
+					}
+				}
 			}
 		}
 
-		.shopping-logo-container {
-			padding: 0.5rem;
-
-			a {
+		.nav-m-sub-links {
+			&-1,
+			&-2,
+			&-3 {
 				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
 				align-items: center;
-			}
+				position: absolute;
+				height: 92vh;
+				top: 8vh;
+				right: 0;
+				z-index: -1;
+				width: 50%;
+				background: white;
+				transform: translateX(-200%);
 
-			.shopping-logo {
-				height: 26px;
-				width: 26px;
-			}
+				a {
+					text-decoration: none;
+					color: inherit;
+					background: white;
+					padding: 0rem 0;
+					display: flex;
+					flex-direction: column;
 
-			span {
-				display: block;
-				height: 24px;
-				width: 24px;
-				border-radius: 50%;
-				background: $black;
+					img {
+						height: 60px;
+					}
+
+					p {
+						text-align: center;
+						padding-top: 5px;
+					}
+				}
 			}
 		}
 	}
 }
 
-.nav-active {
-	transform: translateX(0%);
-}
+// Keyframes
 
-.nav-link-active {
-	animation: navLinkFadeOut 0.2s ease-in backwards 0s;
-}
+// Desktop
 
-@keyframes navLinkFade {
+@keyframes navLinkDown {
 	from {
-		opacity: 0;
+		transform: translateY(0%);
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+
+@keyframes navLinkUp {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+
+// Mobile
+
+@keyframes navLinkOut {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes navLinkIn {
+	from {
 		transform: translateX(0%);
 	}
 	to {
-		opacity: 1;
-		transform: translateX(100%);
+		transform: translateX(-100%);
 	}
 }
 
-@keyframes navLinkFadeOut {
+.nav-slide-out {
+	animation: navLinkOut 0.2s ease-in forwards 0s;
+}
+
+.nav-slide-in {
+	animation: navLinkIn 0.2s ease-in forwards 0s;
+}
+
+// Mobile items
+
+@keyframes subNavLinkOut {
 	from {
-		opacity: 1;
-		transform: translateX(100%);
+		transform: translateX(-200%);
 	}
 	to {
-		opacity: 0;
 		transform: translateX(0%);
 	}
 }
+
+@keyframes subNavLinkIn {
+	from {
+		transform: translateX(0%);
+	}
+	to {
+		transform: translateX(-200%);
+	}
+}
+
+.sub-nav-slide-out {
+	animation: subNavLinkOut 0.2s ease-in forwards 0s;
+}
+
+.sub-nav-slide-in {
+	animation: subNavLinkIn 0.2s ease-in forwards 0s;
+}
+
+// Burger ingredients
 
 .toggle .line1 {
 	transform: rotate(-45deg) translate(-5px, 6px);
