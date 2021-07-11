@@ -13,7 +13,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 8vh;
+  height: 75px;
   width: 100vw;
   background: #d3d3d3;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 .nav-container .logo-container img {
-  max-height: 3vh;
+  max-height: 30px;
 }
 
 .nav-container .shopping-logo-container {
@@ -81,7 +81,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.25rem;
-  height: 8vh;
+  height: 75px;
   padding: 0 1rem;
   -webkit-transition: 0.25s;
   transition: 0.25s;
@@ -102,13 +102,12 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: absolute;
-  top: -6vh;
+  top: -51px;
   z-index: -1;
   left: 0;
-  height: 12vh;
+  height: 125px;
   width: 100vw;
   background: white;
-  padding-top: 0.5rem;
   border-bottom: 1px solid #2b2c28;
   -webkit-animation: navLinkUp ease-in backwards 0.1s;
           animation: navLinkUp ease-in backwards 0.1s;
@@ -195,23 +194,11 @@ body {
     transition: all 0.25s ease;
   }
   .nav-container .nav-m-links {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
     position: absolute;
-    top: 8vh;
+    top: 75px;
     left: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    height: 92vh;
+    height: calc(100vh - 75px);
     width: 50%;
     background-color: #d3d3d3;
     -webkit-transform: translateX(-100%);
@@ -236,6 +223,7 @@ body {
     outline: none;
   }
   .nav-container .nav-m-sub-links-1, .nav-container .nav-m-sub-links-2, .nav-container .nav-m-sub-links-3 {
+    overflow-y: auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -250,8 +238,8 @@ body {
         -ms-flex-align: center;
             align-items: center;
     position: absolute;
-    height: 92vh;
-    top: 8vh;
+    height: calc(100vh - 75px);
+    top: 75px;
     right: 0;
     z-index: -1;
     width: 50%;
@@ -263,7 +251,7 @@ body {
     text-decoration: none;
     color: inherit;
     background: white;
-    padding: 0rem 0;
+    padding-bottom: 1rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
