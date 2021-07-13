@@ -363,8 +363,8 @@ body {
 }
 
 .nav-slide-in {
-  -webkit-animation: navLinkIn 0.2s ease-in forwards 0s;
-          animation: navLinkIn 0.2s ease-in forwards 0s;
+  -webkit-animation: navLinkIn 0.2s ease-in backwards 0s;
+          animation: navLinkIn 0.2s ease-in backwards 0s;
 }
 
 @-webkit-keyframes subNavLinkOut {
@@ -417,8 +417,8 @@ body {
 }
 
 .sub-nav-slide-in {
-  -webkit-animation: subNavLinkIn 0.2s ease-in forwards 0s;
-          animation: subNavLinkIn 0.2s ease-in forwards 0s;
+  -webkit-animation: subNavLinkIn 0.2s ease-in backwards 0s;
+          animation: subNavLinkIn 0.2s ease-in backwards 0s;
 }
 
 .toggle .line1 {

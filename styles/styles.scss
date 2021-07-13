@@ -324,7 +324,7 @@ body {
 }
 
 .nav-slide-in {
-	animation: navLinkIn 0.2s ease-in forwards 0s;
+	animation: navLinkIn 0.2s ease-in backwards 0s;
 }
 
 // Mobile items
@@ -352,7 +352,7 @@ body {
 }
 
 .sub-nav-slide-in {
-	animation: subNavLinkIn 0.2s ease-in forwards 0s;
+	animation: subNavLinkIn 0.2s ease-in backwards 0s;
 }
 
 // Burger ingredients
